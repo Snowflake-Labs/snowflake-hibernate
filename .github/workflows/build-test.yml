@@ -1,0 +1,35 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - main
+      - prep-**
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        default: warning
+        description: "Log level"
+        required: true
+      tags:
+        description: "Test scenario tags"
+
+concurrency:
+  # older builds for the same pull request number or branch should be cancelled
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        shell: bash
+        run: ./ci/build.sh
