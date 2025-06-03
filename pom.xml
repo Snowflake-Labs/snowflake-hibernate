@@ -50,7 +50,7 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <slf4j-api.version>2.0.12</slf4j-api.version>
-        <snowflake-jdbc.version>3.19.0</snowflake-jdbc.version>
+        <snowflake-jdbc.version>3.24.2</snowflake-jdbc.version>
 
         <testGroups>HYBRID,STANDARD,UNIT</testGroups>
     </properties>
